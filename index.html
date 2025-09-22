@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coaching Session Log</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand__title">Coaching Log</span>
+          <span class="brand__subtitle">Capture sessions in seconds</span>
+        </div>
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-controls="app-nav"
+          aria-expanded="false"
+        >
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
+      </header>
+
+      <nav class="app-nav" id="app-nav" aria-label="Primary">
+        <button class="nav__item nav__item--active" type="button" data-target="log-view">
+          Log session
+        </button>
+        <button class="nav__item" type="button" data-target="reference-view">
+          Reference data
+        </button>
+        <button class="nav__item" type="button" data-target="sessions-view">
+          Sessions
+        </button>
+      </nav>
+
+      <main class="app-main">
+        <section id="log-view" class="view view--active" aria-labelledby="log-title">
+          <h1 id="log-title" class="view__title">Log a coaching session</h1>
+          <form id="session-form" class="card form">
+            <div class="form__row">
+              <label class="form__label" for="session-date">Session date</label>
+              <input id="session-date" name="date" type="date" required />
+            </div>
+
+            <div class="form__row">
+              <label class="form__label" for="session-coach">Coach</label>
+              <select id="session-coach" name="coach" required></select>
+            </div>
+
+            <div class="form__row">
+              <label class="form__label" for="session-coachee">Coachee</label>
+              <select id="session-coachee" name="coachee" required></select>
+            </div>
+
+            <div class="form__row">
+              <label class="form__label" for="session-type">Session type</label>
+              <select id="session-type" name="sessionType" required></select>
+            </div>
+
+            <div class="form__row">
+              <label class="form__label" for="session-focus">Focus area</label>
+              <select id="session-focus" name="focusArea" required></select>
+            </div>
+
+            <div class="form__row">
+              <label class="form__label" for="session-status">Status</label>
+              <select id="session-status" name="status" required></select>
+            </div>
+
+            <div class="form__row form__row--split">
+              <div>
+                <label class="form__label" for="session-duration">Duration (minutes)</label>
+                <input
+                  id="session-duration"
+                  name="duration"
+                  type="number"
+                  min="0"
+                  step="5"
+                  inputmode="numeric"
+                  placeholder="45"
+                />
+              </div>
+              <div>
+                <label class="form__label" for="session-follow-up">Follow-up date</label>
+                <input id="session-follow-up" name="followUp" type="date" />
+              </div>
+            </div>
+
+            <div class="form__row">
+              <label class="form__label" for="session-highlights">Highlights</label>
+              <textarea
+                id="session-highlights"
+                name="highlights"
+                rows="3"
+                placeholder="Key wins, progress, outcomes"
+              ></textarea>
+            </div>
+
+            <div class="form__row">
+              <label class="form__label" for="session-actions">Next actions</label>
+              <textarea
+                id="session-actions"
+                name="actions"
+                rows="3"
+                placeholder="Agreed next steps or homework"
+              ></textarea>
+            </div>
+
+            <div class="form__actions">
+              <button type="submit" class="button button--primary">
+                Save session
+              </button>
+              <button type="reset" class="button button--ghost">Clear</button>
+            </div>
+          </form>
+
+          <section class="card quick-view" aria-labelledby="quick-summary-title">
+            <div class="quick-view__header">
+              <h2 id="quick-summary-title">Today at a glance</h2>
+              <button id="quick-refresh" class="icon-button" type="button" aria-label="Refresh list">
+                ↻
+              </button>
+            </div>
+            <ul id="today-sessions" class="quick-view__list"></ul>
+            <p id="today-empty" class="quick-view__empty">No sessions logged for today yet.</p>
+          </section>
+        </section>
+
+        <section id="reference-view" class="view" aria-labelledby="reference-title">
+          <h1 id="reference-title" class="view__title">Manage reference data</h1>
+          <p class="view__description">
+            These lists power the options on the session form. Add new entries or archive ones you no longer use.
+          </p>
+
+          <div id="reference-sections" class="reference-grid"></div>
+        </section>
+
+        <section id="sessions-view" class="view" aria-labelledby="sessions-title">
+          <div class="sessions-header">
+            <div>
+              <h1 id="sessions-title" class="view__title">Session history</h1>
+              <p class="view__description">Search and filter past coaching conversations.</p>
+            </div>
+            <button id="export-json" class="button button--ghost" type="button">
+              Export JSON
+            </button>
+          </div>
+
+          <form id="filter-form" class="card form form--filters">
+            <div class="form__row">
+              <label class="form__label" for="filter-coach">Coach</label>
+              <select id="filter-coach" name="coach"></select>
+            </div>
+            <div class="form__row">
+              <label class="form__label" for="filter-coachee">Coachee</label>
+              <select id="filter-coachee" name="coachee"></select>
+            </div>
+            <div class="form__row">
+              <label class="form__label" for="filter-status">Status</label>
+              <select id="filter-status" name="status"></select>
+            </div>
+            <div class="form__row">
+              <label class="form__label" for="filter-date">Date</label>
+              <input id="filter-date" name="date" type="date" />
+            </div>
+            <div class="form__actions">
+              <button type="submit" class="button button--primary">Apply</button>
+              <button type="button" id="clear-filters" class="button button--ghost">
+                Clear
+              </button>
+            </div>
+          </form>
+
+          <div id="sessions-list" class="timeline"></div>
+        </section>
+      </main>
+    </div>
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
