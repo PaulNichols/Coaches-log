@@ -24,7 +24,7 @@
           <a class="site-link" href="#achievements">Achievements</a>
           <a class="site-link" href="#approach">Training Approach</a>
           <a class="site-link" href="#testimonials">Testimonials</a>
-          <button class="admin-link" type="button" data-open-login>Admin login</button>
+          <a class="admin-link" href="#admin-app" data-open-admin>Admin dashboard</a>
         </nav>
       </header>
 
@@ -39,7 +39,7 @@
             </p>
             <div class="hero__cta">
               <a class="button button--primary" href="#booking">Book a 1:1 session</a>
-              <button class="button button--ghost" type="button" data-open-login>Admin access</button>
+              <a class="button button--ghost" href="#admin-app" data-open-admin>Admin dashboard</a>
             </div>
             <ul class="hero__highlights">
               <li>
@@ -175,46 +175,16 @@
 
       <footer class="site-footer">
         <p>&copy; <span id="copyright-year"></span> Coach Jaylen Carter. All rights reserved.</p>
-        <button class="site-footer__admin" type="button" data-open-login>Coach login</button>
+        <a class="site-footer__admin" href="#admin-app" data-open-admin>Coach dashboard</a>
       </footer>
     </div>
-
-    <section
-      class="admin-login"
-      id="admin-login"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="admin-login-title"
-      hidden
-    >
-      <div class="admin-login__panel">
-        <button class="admin-login__close" type="button" id="close-login" aria-label="Close admin sign-in">×</button>
-        <h2 id="admin-login-title">Admin access</h2>
-        <p id="login-instructions">Sign in to manage session logs and reference data.</p>
-        <div class="admin-login__buttons">
-          <button type="button" class="auth-button auth-button--google" data-auth-provider="google">
-            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21.6 12.23c0-.74-.06-1.28-.18-1.84H12v3.35h5.5c-.11.83-.7 2.08-2 2.92l-.02.13 2.9 2.21.2.02c1.84-1.7 2.9-4.2 2.9-6.79z" fill="#4285F4"/><path d="M12 22c2.7 0 4.96-.9 6.61-2.45l-3.15-2.4c-.84.58-1.97.99-3.46.99-2.65 0-4.9-1.78-5.7-4.24l-.12.01-3.08 2.38-.04.11C3.78 19.44 7.57 22 12 22z" fill="#34A853"/><path d="M6.3 13.9c-.2-.58-.32-1.2-.32-1.9s.12-1.32.3-1.9l-.01-.13-3.12-2.43-.1.05C2.3 9.03 2 10.48 2 12s.3 2.97.85 4.25l3.45-2.35z" fill="#FBBC05"/><path d="M12 7.6c1.87 0 3.14.8 3.87 1.47l2.82-2.74C16.93 4.2 14.67 3.2 12 3.2c-4.43 0-8.22 2.56-9.67 6.27l3.47 2.35C6.4 9.38 9.35 7.6 12 7.6z" fill="#EA4335"/></svg>
-            <span>Continue with Google</span>
-          </button>
-          <button type="button" class="auth-button auth-button--apple" data-auth-provider="apple">
-            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M16.7 12.1c0-2.1 1.7-3.1 1.7-3.1-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.7-1.3 0-2.4.8-3.1 2.1-1.3 2.2-.3 5.4.9 7.2.6.9 1.4 1.9 2.4 1.8.9 0 1.2-.6 2.4-.6s1.4.6 2.4.6c1 .1 1.7-1 2.3-1.8.7-1 .9-1.9.9-1.9-.1 0-2-.7-2-3.7z"/><path d="M14.8 6.4c.5-.6.9-1.4.8-2.3-.8.1-1.6.5-2 .9-.4.4-.8 1.2-.7 2 .8.1 1.5-.3 1.9-.6z"/></svg>
-            <span>Continue with Apple</span>
-          </button>
-        </div>
-        <p class="admin-login__status" id="login-status" aria-live="polite"></p>
-        <p class="admin-login__error" id="login-error" role="alert"></p>
-        <p class="admin-login__footnote">Access reserved for authorized coaching staff.</p>
-      </div>
-    </section>
-
-    <section id="admin-app" class="admin-app" hidden aria-hidden="true">
+    <section id="admin-app" class="admin-app" aria-labelledby="admin-app-title">
       <div class="admin-app__container">
         <div class="admin-app__bar">
           <div class="admin-app__identity">
-            <span class="admin-app__label">Signed in as</span>
-            <span class="admin-app__user" id="admin-user-name"></span>
+            <span class="admin-app__label" id="admin-app-title">Coach dashboard</span>
+            <span class="admin-app__user" id="admin-user-name">Admin access is temporarily open.</span>
           </div>
-          <button class="button button--ghost admin-app__signout" type="button" id="sign-out-button">Sign out</button>
         </div>
 
         <div class="app-shell">
