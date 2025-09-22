@@ -70,7 +70,19 @@ After Firebase is configured and a coach signs in:
 1. Navigate to the **Log session** tab to capture new training notes.
 2. Update coaches, coachees, session types, focus areas, or statuses from the **Reference data** tab.
 3. Filter and export historical sessions from the **Sessions** tab.
-4. Data persists in the browser. Clear site data or open a private window to reset.
+4. Data persists on the server (`data/state.json`). Remove that file or edit it to reset the dashboard.
+
+## Local backend & persistence
+
+The marketing site now ships with a lightweight Node.js backend that keeps coach data on disk so the admin dashboard survives
+page refreshes and browser changes.
+
+- **Start the server:** `npm start` (defaults to [http://localhost:3000](http://localhost:3000)).
+- **API + static hosting:** The server serves `index.html` and exposes `/api` routes for sessions and reference data.
+- **Storage:** Entries are written to `data/state.json`. Edit this file (or delete it) to seed or reset the database.
+
+Because the dashboard talks to the backend for every change, be sure the server is running before opening the admin view. The UI
+shows a loading state and a gentle alert if the API cannot be reached.
 
 ## Tech stack
 

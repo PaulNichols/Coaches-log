@@ -633,6 +633,39 @@ body.admin-active {
   padding: 1rem 1.4rem;
 }
 
+.admin-app__notice {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: rgba(31, 122, 236, 0.12);
+  color: var(--primary);
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(31, 122, 236, 0.16);
+  font-size: 0.95rem;
+}
+
+.admin-app__notice::before {
+  content: '';
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--primary);
+  animation: admin-notice-pulse 1.4s ease-in-out infinite;
+}
+
+.admin-app__notice--error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #991b1b;
+  box-shadow: inset 0 0 0 1px rgba(239, 68, 68, 0.22);
+}
+
+.admin-app__notice--error::before {
+  background: #ef4444;
+  animation: none;
+}
+
 .admin-app__identity {
   display: flex;
   flex-direction: column;
@@ -699,6 +732,18 @@ body.admin-active {
 .admin-app .button:focus-visible {
   outline: 3px solid rgba(31, 122, 236, 0.4);
   outline-offset: 2px;
+}
+
+@keyframes admin-notice-pulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .app-shell {
@@ -829,6 +874,16 @@ body.admin-active {
   display: flex;
   flex-direction: column;
   gap: 18px;
+}
+
+.admin-app form[aria-busy='true'] {
+  opacity: 0.6;
+}
+
+.admin-app .button[aria-busy='true'],
+.admin-app .icon-button[aria-busy='true'] {
+  cursor: progress;
+  opacity: 0.7;
 }
 
 .form__row {
