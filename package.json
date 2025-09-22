@@ -1,0 +1,16 @@
+{
+  "name": "coaches-log",
+  "version": "1.0.0",
+  "description": "A modern landing page and private admin workspace for managing basketball coaching sessions. Players see a sleek marketing site with a Calendly-powered booking widget while coaches unlock the original session tracker after signing in with Google or Apple.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  }
+}

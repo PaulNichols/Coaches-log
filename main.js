@@ -32,10 +32,16 @@ function setupAdminAccess() {
   });
 }
 
-function init() {
+async function init() {
   revealAdminApp();
   setupAdminAccess();
-  initializeLogApp();
+  try {
+    await initializeLogApp();
+  } catch (error) {
+    console.error('Failed to initialize admin dashboard', error);
+  }
 }
 
-init();
+init().catch((error) => {
+  console.error('Unexpected error while starting the app', error);
+});
