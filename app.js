@@ -88,7 +88,13 @@ const clearFiltersButton = document.getElementById('clear-filters');
 const sessionsList = document.getElementById('sessions-list');
 const exportJsonButton = document.getElementById('export-json');
 
-init();
+let initialized = false;
+
+export function initializeLogApp() {
+  if (initialized) return;
+  initialized = true;
+  init();
+}
 
 function init() {
   attachNavigationHandlers();

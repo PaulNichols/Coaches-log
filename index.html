@@ -3,196 +3,390 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Coaching Session Log</title>
+    <title>Coach Jaylen Carter | Elite Basketball Development</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   </head>
   <body>
-    <div class="app-shell">
-      <header class="app-header">
-        <div class="brand">
-          <span class="brand__title">Coaching Log</span>
-          <span class="brand__subtitle">Capture sessions in seconds</span>
+    <div class="site">
+      <header class="site-header">
+        <div class="site-header__brand">
+          <span class="brand-mark">Coach Jaylen Carter</span>
+          <span class="brand-tagline">Elite Basketball Skills Trainer</span>
         </div>
-        <button
-          id="menu-toggle"
-          class="menu-toggle"
-          type="button"
-          aria-label="Open navigation"
-          aria-controls="app-nav"
-          aria-expanded="false"
-        >
-          <span class="menu-toggle__bar"></span>
-          <span class="menu-toggle__bar"></span>
-          <span class="menu-toggle__bar"></span>
-        </button>
+        <nav class="site-header__actions">
+          <a class="site-link" href="#achievements">Achievements</a>
+          <a class="site-link" href="#approach">Training Approach</a>
+          <a class="site-link" href="#testimonials">Testimonials</a>
+          <button class="admin-link" type="button" data-open-login>Admin login</button>
+        </nav>
       </header>
 
-      <nav class="app-nav" id="app-nav" aria-label="Primary">
-        <button class="nav__item nav__item--active" type="button" data-target="log-view">
-          Log session
-        </button>
-        <button class="nav__item" type="button" data-target="reference-view">
-          Reference data
-        </button>
-        <button class="nav__item" type="button" data-target="sessions-view">
-          Sessions
-        </button>
-      </nav>
-
-      <main class="app-main">
-        <section id="log-view" class="view view--active" aria-labelledby="log-title">
-          <h1 id="log-title" class="view__title">Log a coaching session</h1>
-          <form id="session-form" class="card form">
-            <div class="form__row">
-              <label class="form__label" for="session-date">Session date</label>
-              <input id="session-date" name="date" type="date" required />
+      <main class="site-main">
+        <section class="hero" id="book">
+          <div class="hero__content">
+            <p class="hero__eyebrow">Personalized Player Development</p>
+            <h1 class="hero__title">Unlock next-level performance with Coach Jaylen</h1>
+            <p class="hero__description">
+              NCAA point guard turned professional skills coach. Jaylen Carter helps rising hoopers sharpen their handles,
+              elevate basketball IQ, and dominate every possession with game-speed reps tailored to their goals.
+            </p>
+            <div class="hero__cta">
+              <a class="button button--primary" href="#booking">Book a 1:1 session</a>
+              <button class="button button--ghost" type="button" data-open-login>Admin access</button>
             </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-coach">Coach</label>
-              <select id="session-coach" name="coach" required></select>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-coachee">Coachee</label>
-              <select id="session-coachee" name="coachee" required></select>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-type">Session type</label>
-              <select id="session-type" name="sessionType" required></select>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-focus">Focus area</label>
-              <select id="session-focus" name="focusArea" required></select>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-status">Status</label>
-              <select id="session-status" name="status" required></select>
-            </div>
-
-            <div class="form__row form__row--split">
-              <div>
-                <label class="form__label" for="session-duration">Duration (minutes)</label>
-                <input
-                  id="session-duration"
-                  name="duration"
-                  type="number"
-                  min="0"
-                  step="5"
-                  inputmode="numeric"
-                  placeholder="45"
-                />
-              </div>
-              <div>
-                <label class="form__label" for="session-follow-up">Follow-up date</label>
-                <input id="session-follow-up" name="followUp" type="date" />
-              </div>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-highlights">Highlights</label>
-              <textarea
-                id="session-highlights"
-                name="highlights"
-                rows="3"
-                placeholder="Key wins, progress, outcomes"
-              ></textarea>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-actions">Next actions</label>
-              <textarea
-                id="session-actions"
-                name="actions"
-                rows="3"
-                placeholder="Agreed next steps or homework"
-              ></textarea>
-            </div>
-
-            <div class="form__actions">
-              <button type="submit" class="button button--primary">
-                Save session
-              </button>
-              <button type="reset" class="button button--ghost">Clear</button>
-            </div>
-          </form>
-
-          <section class="card quick-view" aria-labelledby="quick-summary-title">
-            <div class="quick-view__header">
-              <h2 id="quick-summary-title">Today at a glance</h2>
-              <button id="quick-refresh" class="icon-button" type="button" aria-label="Refresh list">
-                ↻
-              </button>
-            </div>
-            <ul id="today-sessions" class="quick-view__list"></ul>
-            <p id="today-empty" class="quick-view__empty">No sessions logged for today yet.</p>
-          </section>
-        </section>
-
-        <section id="reference-view" class="view" aria-labelledby="reference-title">
-          <h1 id="reference-title" class="view__title">Manage reference data</h1>
-          <p class="view__description">
-            These lists power the options on the session form. Add new entries or archive ones you no longer use.
-          </p>
-
-          <div id="reference-sections" class="reference-grid"></div>
-        </section>
-
-        <section id="sessions-view" class="view" aria-labelledby="sessions-title">
-          <div class="sessions-header">
-            <div>
-              <h1 id="sessions-title" class="view__title">Session history</h1>
-              <p class="view__description">Search and filter past coaching conversations.</p>
-            </div>
-            <button id="export-json" class="button button--ghost" type="button">
-              Export JSON
-            </button>
+            <ul class="hero__highlights">
+              <li>
+                <strong>USA Basketball Gold License</strong>
+                <span>Certified trainer working with youth &amp; college athletes</span>
+              </li>
+              <li>
+                <strong>3× Conference Champion</strong>
+                <span>Leadership experience on the biggest stages</span>
+              </li>
+              <li>
+                <strong>Player Development Specialist</strong>
+                <span>Customized plans built from pro-level film study</span>
+              </li>
+            </ul>
           </div>
 
-          <form id="filter-form" class="card form form--filters">
-            <div class="form__row">
-              <label class="form__label" for="filter-coach">Coach</label>
-              <select id="filter-coach" name="coach"></select>
+          <div class="hero__booking" id="booking">
+            <div class="booking-card">
+              <h2 class="booking-card__title">Reserve your 1:1 training</h2>
+              <p class="booking-card__description">
+                Pick a time that fits your schedule. Sessions are hosted at the Southside Training Lab with options for on-site or
+                travel workouts.
+              </p>
+              <div class="calendly-card">
+                <div
+                  class="calendly-inline-widget"
+                  data-url="https://calendly.com/YOUR-CALENDLY-USERNAME/60min"
+                  style="min-width: 320px; height: 660px"
+                ></div>
+              </div>
             </div>
-            <div class="form__row">
-              <label class="form__label" for="filter-coachee">Coachee</label>
-              <select id="filter-coachee" name="coachee"></select>
-            </div>
-            <div class="form__row">
-              <label class="form__label" for="filter-status">Status</label>
-              <select id="filter-status" name="status"></select>
-            </div>
-            <div class="form__row">
-              <label class="form__label" for="filter-date">Date</label>
-              <input id="filter-date" name="date" type="date" />
-            </div>
-            <div class="form__actions">
-              <button type="submit" class="button button--primary">Apply</button>
-              <button type="button" id="clear-filters" class="button button--ghost">
-                Clear
-              </button>
-            </div>
-          </form>
+          </div>
+        </section>
 
-          <div id="sessions-list" class="timeline"></div>
+        <section class="section achievements" id="achievements">
+          <div class="section__header">
+            <h2>Signature accolades</h2>
+            <p>Proven success on the court and in the gym.</p>
+          </div>
+          <div class="cards-grid">
+            <article class="achievement-card">
+              <h3>All-State Guard</h3>
+              <p>Led Westview High to back-to-back state titles with 22 PPG, 8 APG, and 2.4 steals per game.</p>
+            </article>
+            <article class="achievement-card">
+              <h3>NCAA Floor General</h3>
+              <p>Started four years at Coastal State, finishing top-5 all time in assists and free-throw percentage.</p>
+            </article>
+            <article class="achievement-card">
+              <h3>Youth Development Leader</h3>
+              <p>Mentored 40+ athletes into college programs through AAU and high-performance summer intensives.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section approach" id="approach">
+          <div class="section__header">
+            <h2>Modern training that translates</h2>
+            <p>Every drill is anchored in film study, pace, and basketball IQ.</p>
+          </div>
+          <div class="approach-grid">
+            <article class="approach-card">
+              <h3>Game-speed reps</h3>
+              <p>High-intensity situational work that mirrors real defensive pressure and decision making.</p>
+            </article>
+            <article class="approach-card">
+              <h3>IQ &amp; film breakdowns</h3>
+              <p>Weekly film sessions that help athletes read the floor, attack mismatches, and lead with confidence.</p>
+            </article>
+            <article class="approach-card">
+              <h3>Strength &amp; mobility</h3>
+              <p>Custom mobility prep, core activation, and finishing strength tailored to each athlete's body.</p>
+            </article>
+            <article class="approach-card">
+              <h3>Season planning</h3>
+              <p>Progressive programming that keeps athletes fresh during long AAU and varsity campaigns.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section testimonials" id="testimonials">
+          <div class="section__header">
+            <h2>What players are saying</h2>
+            <p>Real results from athletes who train with Coach Jaylen.</p>
+          </div>
+          <div class="testimonial-grid">
+            <figure class="testimonial-card">
+              <blockquote>
+                “Coach Jaylen completely rebuilt my handle and shot mechanics. I earned my first varsity start within six weeks.”
+              </blockquote>
+              <figcaption>— Mia Rodriguez, Sophomore PG</figcaption>
+            </figure>
+            <figure class="testimonial-card">
+              <blockquote>
+                “The mix of skill work and game IQ changed everything. My recruitment blew up after his summer program.”
+              </blockquote>
+              <figcaption>— Carter Mills, AAU Wing</figcaption>
+            </figure>
+            <figure class="testimonial-card">
+              <blockquote>
+                “He keeps workouts fun but intense. Every session has a purpose and I can feel myself getting more confident.”
+              </blockquote>
+              <figcaption>— Jayda Lewis, Middle School Guard</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="section connect" id="connect">
+          <div class="connect-card">
+            <h2>Training locations &amp; contact</h2>
+            <div class="connect-grid">
+              <div>
+                <h3>Gym availability</h3>
+                <ul>
+                  <li>Southside Training Lab — weekday evenings</li>
+                  <li>North Ridge Rec Center — weekend mornings</li>
+                  <li>Private court sessions available on request</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Stay connected</h3>
+                <ul>
+                  <li>Email: <a href="mailto:coachjaylen@nextlevelskills.com">coachjaylen@nextlevelskills.com</a></li>
+                  <li>Instagram: <a href="https://instagram.com/coachjaylencarter" target="_blank" rel="noopener">@coachjaylencarter</a></li>
+                  <li>Phone: <a href="tel:+14045551234">(404) 555-1234</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
-    </div>
-    <div id="toast" role="status" aria-live="polite"></div>
 
-    <script type="module" src="app.js"></script>
+      <footer class="site-footer">
+        <p>&copy; <span id="copyright-year"></span> Coach Jaylen Carter. All rights reserved.</p>
+        <button class="site-footer__admin" type="button" data-open-login>Coach login</button>
+      </footer>
+    </div>
+
+    <section
+      class="admin-login"
+      id="admin-login"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="admin-login-title"
+      hidden
+    >
+      <div class="admin-login__panel">
+        <button class="admin-login__close" type="button" id="close-login" aria-label="Close admin sign-in">×</button>
+        <h2 id="admin-login-title">Admin access</h2>
+        <p id="login-instructions">Sign in to manage session logs and reference data.</p>
+        <div class="admin-login__buttons">
+          <button type="button" class="auth-button auth-button--google" data-auth-provider="google">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21.6 12.23c0-.74-.06-1.28-.18-1.84H12v3.35h5.5c-.11.83-.7 2.08-2 2.92l-.02.13 2.9 2.21.2.02c1.84-1.7 2.9-4.2 2.9-6.79z" fill="#4285F4"/><path d="M12 22c2.7 0 4.96-.9 6.61-2.45l-3.15-2.4c-.84.58-1.97.99-3.46.99-2.65 0-4.9-1.78-5.7-4.24l-.12.01-3.08 2.38-.04.11C3.78 19.44 7.57 22 12 22z" fill="#34A853"/><path d="M6.3 13.9c-.2-.58-.32-1.2-.32-1.9s.12-1.32.3-1.9l-.01-.13-3.12-2.43-.1.05C2.3 9.03 2 10.48 2 12s.3 2.97.85 4.25l3.45-2.35z" fill="#FBBC05"/><path d="M12 7.6c1.87 0 3.14.8 3.87 1.47l2.82-2.74C16.93 4.2 14.67 3.2 12 3.2c-4.43 0-8.22 2.56-9.67 6.27l3.47 2.35C6.4 9.38 9.35 7.6 12 7.6z" fill="#EA4335"/></svg>
+            <span>Continue with Google</span>
+          </button>
+          <button type="button" class="auth-button auth-button--apple" data-auth-provider="apple">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M16.7 12.1c0-2.1 1.7-3.1 1.7-3.1-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.7-1.3 0-2.4.8-3.1 2.1-1.3 2.2-.3 5.4.9 7.2.6.9 1.4 1.9 2.4 1.8.9 0 1.2-.6 2.4-.6s1.4.6 2.4.6c1 .1 1.7-1 2.3-1.8.7-1 .9-1.9.9-1.9-.1 0-2-.7-2-3.7z"/><path d="M14.8 6.4c.5-.6.9-1.4.8-2.3-.8.1-1.6.5-2 .9-.4.4-.8 1.2-.7 2 .8.1 1.5-.3 1.9-.6z"/></svg>
+            <span>Continue with Apple</span>
+          </button>
+        </div>
+        <p class="admin-login__status" id="login-status" aria-live="polite"></p>
+        <p class="admin-login__error" id="login-error" role="alert"></p>
+        <p class="admin-login__footnote">Access reserved for authorized coaching staff.</p>
+      </div>
+    </section>
+
+    <section id="admin-app" class="admin-app" hidden aria-hidden="true">
+      <div class="admin-app__container">
+        <div class="admin-app__bar">
+          <div class="admin-app__identity">
+            <span class="admin-app__label">Signed in as</span>
+            <span class="admin-app__user" id="admin-user-name"></span>
+          </div>
+          <button class="button button--ghost admin-app__signout" type="button" id="sign-out-button">Sign out</button>
+        </div>
+
+        <div class="app-shell">
+          <header class="app-header">
+            <div class="brand">
+              <span class="brand__title">Coaching Log</span>
+              <span class="brand__subtitle">Capture sessions in seconds</span>
+            </div>
+            <button
+              id="menu-toggle"
+              class="menu-toggle"
+              type="button"
+              aria-label="Open navigation"
+              aria-controls="app-nav"
+              aria-expanded="false"
+            >
+              <span class="menu-toggle__bar"></span>
+              <span class="menu-toggle__bar"></span>
+              <span class="menu-toggle__bar"></span>
+            </button>
+          </header>
+
+          <nav class="app-nav" id="app-nav" aria-label="Primary">
+            <button class="nav__item nav__item--active" type="button" data-target="log-view">Log session</button>
+            <button class="nav__item" type="button" data-target="reference-view">Reference data</button>
+            <button class="nav__item" type="button" data-target="sessions-view">Sessions</button>
+          </nav>
+
+          <main class="app-main">
+            <section id="log-view" class="view view--active" aria-labelledby="log-title">
+              <h1 id="log-title" class="view__title">Log a coaching session</h1>
+              <form id="session-form" class="card form">
+                <div class="form__row">
+                  <label class="form__label" for="session-date">Session date</label>
+                  <input id="session-date" name="date" type="date" required />
+                </div>
+
+                <div class="form__row">
+                  <label class="form__label" for="session-coach">Coach</label>
+                  <select id="session-coach" name="coach" required></select>
+                </div>
+
+                <div class="form__row">
+                  <label class="form__label" for="session-coachee">Coachee</label>
+                  <select id="session-coachee" name="coachee" required></select>
+                </div>
+
+                <div class="form__row">
+                  <label class="form__label" for="session-type">Session type</label>
+                  <select id="session-type" name="sessionType" required></select>
+                </div>
+
+                <div class="form__row">
+                  <label class="form__label" for="session-focus">Focus area</label>
+                  <select id="session-focus" name="focusArea" required></select>
+                </div>
+
+                <div class="form__row">
+                  <label class="form__label" for="session-status">Status</label>
+                  <select id="session-status" name="status" required></select>
+                </div>
+
+                <div class="form__row form__row--split">
+                  <div>
+                    <label class="form__label" for="session-duration">Duration (minutes)</label>
+                    <input
+                      id="session-duration"
+                      name="duration"
+                      type="number"
+                      min="0"
+                      step="5"
+                      inputmode="numeric"
+                      placeholder="45"
+                    />
+                  </div>
+                  <div>
+                    <label class="form__label" for="session-follow-up">Follow-up date</label>
+                    <input id="session-follow-up" name="followUp" type="date" />
+                  </div>
+                </div>
+
+                <div class="form__row">
+                  <label class="form__label" for="session-highlights">Highlights</label>
+                  <textarea
+                    id="session-highlights"
+                    name="highlights"
+                    rows="3"
+                    placeholder="Key wins, progress, outcomes"
+                  ></textarea>
+                </div>
+
+                <div class="form__row">
+                  <label class="form__label" for="session-actions">Next actions</label>
+                  <textarea
+                    id="session-actions"
+                    name="actions"
+                    rows="3"
+                    placeholder="Agreed next steps or homework"
+                  ></textarea>
+                </div>
+
+                <div class="form__actions">
+                  <button type="submit" class="button button--primary">Save session</button>
+                  <button type="reset" class="button button--ghost">Clear</button>
+                </div>
+              </form>
+
+              <section class="card quick-view" aria-labelledby="quick-summary-title">
+                <div class="quick-view__header">
+                  <h2 id="quick-summary-title">Today at a glance</h2>
+                  <button id="quick-refresh" class="icon-button" type="button" aria-label="Refresh list">↻</button>
+                </div>
+                <ul id="today-sessions" class="quick-view__list"></ul>
+                <p id="today-empty" class="quick-view__empty">No sessions logged for today yet.</p>
+              </section>
+            </section>
+
+            <section id="reference-view" class="view" aria-labelledby="reference-title">
+              <h1 id="reference-title" class="view__title">Manage reference data</h1>
+              <p class="view__description">
+                These lists power the options on the session form. Add new entries or archive ones you no longer use.
+              </p>
+
+              <div id="reference-sections" class="reference-grid"></div>
+            </section>
+
+            <section id="sessions-view" class="view" aria-labelledby="sessions-title">
+              <div class="sessions-header">
+                <div>
+                  <h1 id="sessions-title" class="view__title">Session history</h1>
+                  <p class="view__description">Search and filter past coaching conversations.</p>
+                </div>
+                <button id="export-json" class="button button--ghost" type="button">Export JSON</button>
+              </div>
+
+              <form id="filter-form" class="card form form--filters">
+                <div class="form__row">
+                  <label class="form__label" for="filter-coach">Coach</label>
+                  <select id="filter-coach" name="coach"></select>
+                </div>
+                <div class="form__row">
+                  <label class="form__label" for="filter-coachee">Coachee</label>
+                  <select id="filter-coachee" name="coachee"></select>
+                </div>
+                <div class="form__row">
+                  <label class="form__label" for="filter-status">Status</label>
+                  <select id="filter-status" name="status"></select>
+                </div>
+                <div class="form__row">
+                  <label class="form__label" for="filter-date">Date</label>
+                  <input id="filter-date" name="date" type="date" />
+                </div>
+                <div class="form__actions">
+                  <button type="submit" class="button button--primary">Apply</button>
+                  <button type="button" id="clear-filters" class="button button--ghost">Clear</button>
+                </div>
+              </form>
+
+              <div id="sessions-list" class="timeline"></div>
+            </section>
+          </main>
+        </div>
+        <div id="toast" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <script>
+      const yearEl = document.getElementById('copyright-year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+    </script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
