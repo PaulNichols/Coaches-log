@@ -24,3 +24,13 @@ A lightweight, mobile-friendly coaching session tracker that stores data locally
 - Vanilla HTML, CSS and JavaScript (no build step required)
 - Responsive layout optimized for phones and tablets
 - Local storage persistence
+
+## Deploying to GitHub Pages
+
+This project ships with a GitHub Actions workflow that publishes the static site straight to GitHub Pages from the `main` branch. To get it live:
+
+1. Push the repository to GitHub if you have not already.
+2. In the repository settings, open **Pages** and choose **GitHub Actions** as the source.
+3. Trigger the workflow by pushing to `main` (or run it manually from the **Actions** tab). The action uploads the contents of the repository and deploys them to Pages.
+
+Once the run finishes, the site will be available at the URL shown in the workflow summary (typically `https://<username>.github.io/<repo>`). Because all files are referenced with relative paths, no additional configuration is required for the hosted version.
