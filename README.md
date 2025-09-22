@@ -25,6 +25,18 @@ A lightweight, mobile-friendly coaching session tracker that stores data locally
 - Responsive layout optimized for phones and tablets
 - Local storage persistence
 
+## Backend and data storage
+
+This project does not rely on a traditional backend service or remote database. All information that you enter is written to the
+browser's `localStorage` under the `coachesLogData` key. The data is stored as a JSON blob that contains two primary sections:
+
+- `referenceData` – arrays of the coaches, coachees, session types, focus areas, and statuses you manage from the Reference Data tab.
+- `sessions` – the individual coaching session records you log from the main form.
+
+Because the data stays entirely in the browser, clearing site data or using a different device will result in a fresh, empty
+application state. If you need to back up or migrate information, use the Sessions tab's export functionality to download the JSON
+and then import it into another browser instance.
+
 ## Deploying to GitHub Pages
 
 This project ships with a GitHub Actions workflow that publishes the static site straight to GitHub Pages from the `main` branch. To get it live:
