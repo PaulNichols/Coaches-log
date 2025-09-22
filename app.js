@@ -88,9 +88,20 @@ const clearFiltersButton = document.getElementById('clear-filters');
 const sessionsList = document.getElementById('sessions-list');
 const exportJsonButton = document.getElementById('export-json');
 
-init();
+let isInitialized = false;
 
 function init() {
+  if (isInitialized) {
+    return;
+  }
+
+  if (!sessionForm || !referenceSectionsEl || !sessionsList || !appNav || !menuToggle) {
+    console.warn('Coaching log UI not found. Initialization skipped.');
+    return;
+  }
+
+  isInitialized = true;
+
   attachNavigationHandlers();
   attachMenuToggle();
   menuToggle.setAttribute('aria-expanded', 'false');
@@ -108,6 +119,22 @@ function init() {
   renderSessionList();
   renderTodaySessions();
 }
+
+function requestInitWhenReady() {
+  if (document.body.classList.contains('admin-authenticated')) {
+    init();
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', requestInitWhenReady);
+} else {
+  requestInitWhenReady();
+}
+
+document.addEventListener('coaching-app:init', () => {
+  init();
+});
 
 function loadState() {
   try {

@@ -3,196 +3,295 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Coaching Session Log</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Jordan Mitchell | Elite Basketball Skills Coach</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="app-shell">
-      <header class="app-header">
-        <div class="brand">
-          <span class="brand__title">Coaching Log</span>
-          <span class="brand__subtitle">Capture sessions in seconds</span>
-        </div>
-        <button
-          id="menu-toggle"
-          class="menu-toggle"
-          type="button"
-          aria-label="Open navigation"
-          aria-controls="app-nav"
-          aria-expanded="false"
-        >
-          <span class="menu-toggle__bar"></span>
-          <span class="menu-toggle__bar"></span>
-          <span class="menu-toggle__bar"></span>
-        </button>
-      </header>
-
-      <nav class="app-nav" id="app-nav" aria-label="Primary">
-        <button class="nav__item nav__item--active" type="button" data-target="log-view">
-          Log session
-        </button>
-        <button class="nav__item" type="button" data-target="reference-view">
-          Reference data
-        </button>
-        <button class="nav__item" type="button" data-target="sessions-view">
-          Sessions
-        </button>
-      </nav>
-
-      <main class="app-main">
-        <section id="log-view" class="view view--active" aria-labelledby="log-title">
-          <h1 id="log-title" class="view__title">Log a coaching session</h1>
-          <form id="session-form" class="card form">
-            <div class="form__row">
-              <label class="form__label" for="session-date">Session date</label>
-              <input id="session-date" name="date" type="date" required />
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-coach">Coach</label>
-              <select id="session-coach" name="coach" required></select>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-coachee">Coachee</label>
-              <select id="session-coachee" name="coachee" required></select>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-type">Session type</label>
-              <select id="session-type" name="sessionType" required></select>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-focus">Focus area</label>
-              <select id="session-focus" name="focusArea" required></select>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-status">Status</label>
-              <select id="session-status" name="status" required></select>
-            </div>
-
-            <div class="form__row form__row--split">
-              <div>
-                <label class="form__label" for="session-duration">Duration (minutes)</label>
-                <input
-                  id="session-duration"
-                  name="duration"
-                  type="number"
-                  min="0"
-                  step="5"
-                  inputmode="numeric"
-                  placeholder="45"
-                />
-              </div>
-              <div>
-                <label class="form__label" for="session-follow-up">Follow-up date</label>
-                <input id="session-follow-up" name="followUp" type="date" />
-              </div>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-highlights">Highlights</label>
-              <textarea
-                id="session-highlights"
-                name="highlights"
-                rows="3"
-                placeholder="Key wins, progress, outcomes"
-              ></textarea>
-            </div>
-
-            <div class="form__row">
-              <label class="form__label" for="session-actions">Next actions</label>
-              <textarea
-                id="session-actions"
-                name="actions"
-                rows="3"
-                placeholder="Agreed next steps or homework"
-              ></textarea>
-            </div>
-
-            <div class="form__actions">
-              <button type="submit" class="button button--primary">
-                Save session
-              </button>
-              <button type="reset" class="button button--ghost">Clear</button>
-            </div>
-          </form>
-
-          <section class="card quick-view" aria-labelledby="quick-summary-title">
-            <div class="quick-view__header">
-              <h2 id="quick-summary-title">Today at a glance</h2>
-              <button id="quick-refresh" class="icon-button" type="button" aria-label="Refresh list">
-                ↻
-              </button>
-            </div>
-            <ul id="today-sessions" class="quick-view__list"></ul>
-            <p id="today-empty" class="quick-view__empty">No sessions logged for today yet.</p>
-          </section>
-        </section>
-
-        <section id="reference-view" class="view" aria-labelledby="reference-title">
-          <h1 id="reference-title" class="view__title">Manage reference data</h1>
-          <p class="view__description">
-            These lists power the options on the session form. Add new entries or archive ones you no longer use.
-          </p>
-
-          <div id="reference-sections" class="reference-grid"></div>
-        </section>
-
-        <section id="sessions-view" class="view" aria-labelledby="sessions-title">
-          <div class="sessions-header">
-            <div>
-              <h1 id="sessions-title" class="view__title">Session history</h1>
-              <p class="view__description">Search and filter past coaching conversations.</p>
-            </div>
-            <button id="export-json" class="button button--ghost" type="button">
-              Export JSON
-            </button>
+    <header class="hero" id="top">
+      <div class="container hero__nav">
+        <a class="brand" href="#top">
+          <span class="brand__mark">JM</span>
+          <span class="brand__name">Mitchell Basketball Coaching</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">
+            <span class="sr-only">Toggle navigation</span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="nav__links" id="nav-links">
+            <a href="#about">About</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#approach">Training</a>
+            <a href="#book-now">Book Now</a>
+            <a class="nav__login" href="admin.html">Coach Login</a>
           </div>
+        </nav>
+      </div>
 
-          <form id="filter-form" class="card form form--filters">
-            <div class="form__row">
-              <label class="form__label" for="filter-coach">Coach</label>
-              <select id="filter-coach" name="coach"></select>
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow">Personalized player development</p>
+          <h1>Elevate your game with Coach Jordan Mitchell</h1>
+          <p class="hero__lead">
+            Former Division I point guard turned pro skills coach helping athletes dominate
+            with explosive footwork, elite ball handling, and unshakable confidence.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#book-now">Book a 1:1 session</a>
+            <a class="button button--ghost" href="#achievements">See track record</a>
+          </div>
+          <dl class="hero__stats" aria-label="Career highlights">
+            <div>
+              <dt>50+</dt>
+              <dd>college athletes mentored</dd>
             </div>
-            <div class="form__row">
-              <label class="form__label" for="filter-coachee">Coachee</label>
-              <select id="filter-coachee" name="coachee"></select>
+            <div>
+              <dt>12</dt>
+              <dd>years coaching experience</dd>
             </div>
-            <div class="form__row">
-              <label class="form__label" for="filter-status">Status</label>
-              <select id="filter-status" name="status"></select>
+            <div>
+              <dt>94%</dt>
+              <dd>athlete satisfaction rating</dd>
             </div>
-            <div class="form__row">
-              <label class="form__label" for="filter-date">Date</label>
-              <input id="filter-date" name="date" type="date" />
-            </div>
-            <div class="form__actions">
-              <button type="submit" class="button button--primary">Apply</button>
-              <button type="button" id="clear-filters" class="button button--ghost">
-                Clear
-              </button>
-            </div>
-          </form>
+          </dl>
+        </div>
 
-          <div id="sessions-list" class="timeline"></div>
-        </section>
-      </main>
-    </div>
-    <div id="toast" role="status" aria-live="polite"></div>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="highlight-card">
+            <span class="highlight-card__tag">Skills Lab Focus</span>
+            <h2>Unlock the next level</h2>
+            <ul class="highlight-card__list">
+              <li>Explosive first step &amp; finishing craft</li>
+              <li>Advanced ball handling under pressure</li>
+              <li>Game-speed shot making progression</li>
+              <li>Film breakdown &amp; performance tracking</li>
+            </ul>
+            <div class="highlight-card__note">Custom plans for every athlete</div>
+          </div>
+          <div class="badge-grid">
+            <div class="badge">
+              <span class="badge__value">D1</span>
+              <span class="badge__label">All-Conference Guard</span>
+            </div>
+            <div class="badge">
+              <span class="badge__value">USA</span>
+              <span class="badge__label">Basketball Certified</span>
+            </div>
+            <div class="badge">
+              <span class="badge__value">3x</span>
+              <span class="badge__label">State Champion Coach</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    <script type="module" src="app.js"></script>
+    <main>
+      <section id="book-now" class="section section--booking">
+        <div class="container section__header">
+          <div>
+            <p class="eyebrow">Reserve your spot</p>
+            <h2>1:1 training sessions tailored to your goals</h2>
+            <p>
+              Lock in a personalized workout with Coach Mitchell. Sessions are designed around
+              your upcoming season, position-specific responsibilities, and immediate skill
+              priorities.
+            </p>
+          </div>
+          <a class="button button--secondary" href="https://calendly.com/coach-mitchell/1-on-1-training" target="_blank" rel="noopener">
+            Open Calendly
+          </a>
+        </div>
+        <div class="container calendly-card">
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/coach-mitchell/1-on-1-training"
+            style="min-width: 320px; height: 680px"
+          ></div>
+        </div>
+      </section>
+
+      <section id="about" class="section section--about">
+        <div class="container section__grid">
+          <div class="section__content">
+            <p class="eyebrow">Meet the coach</p>
+            <h2>Jordan is obsessed with player development</h2>
+            <p>
+              A decorated collegiate guard and professional development specialist, Jordan blends
+              high-IQ game film study with immersive on-court reps to transform raw potential into
+              reliable production. His high-energy sessions emphasize confidence, creativity, and
+              real-game reads so athletes feel unstoppable when it matters most.
+            </p>
+            <ul class="pill-list" aria-label="Qualifications">
+              <li>USA Basketball Gold Coach License</li>
+              <li>NSCA Certified Strength &amp; Conditioning Specialist</li>
+              <li>Master's in Sport Psychology</li>
+            </ul>
+          </div>
+          <div class="section__media">
+            <div class="profile-card">
+              <span class="profile-card__tag">Coach Jordan Mitchell</span>
+              <p>
+                "Every drill, every rep, every conversation is designed to give you a competitive
+                advantage. We'll build the habits that make the big moments feel easy."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="achievements" class="section">
+        <div class="container">
+          <div class="section__header">
+            <div>
+              <p class="eyebrow">Proven success</p>
+              <h2>A track record of developing difference-makers</h2>
+            </div>
+          </div>
+          <div class="card-grid">
+            <article class="info-card">
+              <h3>College &amp; Pro Ready</h3>
+              <ul>
+                <li>15 athletes earned Division I scholarships</li>
+                <li>4 alumni currently competing professionally overseas</li>
+                <li>Player development consultant for two top-25 high school programs</li>
+              </ul>
+            </article>
+            <article class="info-card">
+              <h3>Holistic Development</h3>
+              <ul>
+                <li>Customized strength, mobility, and recovery plans</li>
+                <li>Leadership labs that build voice and presence</li>
+                <li>Quarterly progress reports with advanced analytics</li>
+              </ul>
+            </article>
+            <article class="info-card">
+              <h3>Community Impact</h3>
+              <ul>
+                <li>Founder of the Metro Youth Basketball Academy</li>
+                <li>Annual summer camps serving 200+ young athletes</li>
+                <li>Mentor network connecting athletes with alumni support</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="approach" class="section section--approach">
+        <div class="container section__header">
+          <div>
+            <p class="eyebrow">Training blueprint</p>
+            <h2>What a typical skills lab looks like</h2>
+          </div>
+        </div>
+        <div class="container timeline-grid">
+          <article class="timeline-card">
+            <h3>1. Game assessment</h3>
+            <p>Film breakdown, shot charts, and player interview to set the roadmap.</p>
+          </article>
+          <article class="timeline-card">
+            <h3>2. Court work</h3>
+            <p>Position-specific skill blocks paired with situational reads and counters.</p>
+          </article>
+          <article class="timeline-card">
+            <h3>3. Performance feedback</h3>
+            <p>Metric tracking, homework assignments, and mindset coaching to sustain growth.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="testimonials" class="section section--testimonials">
+        <div class="container section__header">
+          <div>
+            <p class="eyebrow">Athlete feedback</p>
+            <h2>Trusted by players and parents</h2>
+          </div>
+        </div>
+        <div class="container quote-grid">
+          <figure class="quote-card">
+            <blockquote>
+              "Coach Mitchell saw the gaps in my game instantly. After one summer together I earned a
+              starting spot as a freshman point guard."
+            </blockquote>
+            <figcaption>— Maya R., Big Ten guard</figcaption>
+          </figure>
+          <figure class="quote-card">
+            <blockquote>
+              "The mix of intensity and positivity keeps my son locked in. Jordan's progress reports
+              make it easy to see the growth week to week."
+            </blockquote>
+            <figcaption>— Dana L., parent of a varsity standout</figcaption>
+          </figure>
+          <figure class="quote-card">
+            <blockquote>
+              "Sessions feel like game situations. We drill reads, decision-making, and mindset so the
+              fourth quarter feels calm."
+            </blockquote>
+            <figcaption>— Eli S., overseas pro guard</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section--cta">
+        <div class="container section__header">
+          <div>
+            <h2>Ready to create your breakthrough season?</h2>
+            <p>Secure your workout slot and let's design the blueprint for your best basketball yet.</p>
+          </div>
+          <a class="button button--primary" href="https://calendly.com/coach-mitchell/1-on-1-training" target="_blank" rel="noopener">
+            Book your session
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <p class="brand footer__brand">
+            <span class="brand__mark">JM</span>
+            <span class="brand__name">Mitchell Basketball Coaching</span>
+          </p>
+          <p class="footer__copy">&copy; <span id="year"></span> Jordan Mitchell. All rights reserved.</p>
+        </div>
+        <div class="footer__links">
+          <a href="mailto:hello@mitchellbasketball.com">hello@mitchellbasketball.com</a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const navToggle = document.getElementById('nav-toggle');
+      const navLinks = document.getElementById('nav-links');
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+          const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', String(!isOpen));
+          navLinks.classList.toggle('nav__links--open', !isOpen);
+        });
+
+        navLinks.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('nav__links--open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      const yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+    </script>
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   </body>
 </html>
